@@ -1,0 +1,16 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+
+    "jupyter-packaging",
+    "jupyterlab>=3",
+
+
+    "cmake",
+    "ninja",
+    "numpy",
+    "scikit-build",
+
+]
+build-backend="setuptools.build_meta"
