@@ -1,8 +1,0 @@
-name: Build Status
-
-
-on: [push]
-
-jobs:
-  call-python-example:
-    uses: timkpaine/pyproject-cookiecutter-example/.github/workflows/build.yml@python
