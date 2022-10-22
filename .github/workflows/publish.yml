@@ -1,0 +1,81 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      # NOTE: can delete these, used by CI
+      - python
+      - cpp
+      - js
+      - jupyter
+      - rust
+    tags:
+      - v*
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  dist:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+        cache: 'pip'
+        cache-dependency-path: 'setup.py'
+
+    - name: Install dependencies
+      run: |
+        make develop
+    - name: Make sdist
+      run: |
+        make dist-py-sdist
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '39' }}
+
+    - name: Install cibuildwheel
+      run: |
+        python -m pip install cibuildwheel
+
+    - name: Build wheels
+      uses: pypa/cibuildwheel@v2.11.1
+      env:
+        CIBW_BUILD: "cp37-ma*64 cp38-ma*64 cp39-ma*64"
+        CIBW_BUILD_VERBOSITY: 2
+        # needed for m1 builds
+        CIBW_ENVIRONMENT_MACOS: "CFLAGS='-I/usr/local/include -L/usr/local/lib' CXXFLAGS='-I/usr/local/include -L/usr/local/lib' LDFLAGS='-L/usr/local/lib'"
+        CIBW_ARCHS_MACOS: "x86_64 arm64"
+      with:
+        package-dir: .
+        output-dir: wheelhouse
+      if: ${{ matrix.os != 'windows-latest' }}
+
+    - name: Build wheels - Windows
+      uses: pypa/cibuildwheel@v2.11.1
+      env:
+        CMAKE_GENERATOR: Visual Studio 17 2022
+        CIBW_BUILD: "cp37*amd64 cp38*amd64 cp39*amd64"
+        CIBW_BUILD_VERBOSITY: 2
+      with:
+        package-dir: .
+        output-dir: wheelhouse
+      if: ${{ matrix.os == 'windows-latest' }}
+
+    - uses: actions/upload-artifact@v3
+      with:
+        path: ./dist/*.tar.gz
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+
+    - uses: actions/upload-artifact@v3
+      with:
+        path: ./wheelhouse/*.whl
