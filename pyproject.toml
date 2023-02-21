@@ -46,7 +46,7 @@ homepage = "https://github.com/timkpaine/pyproject-cookiecutter"
 [project.optional-dependencies]
 develop = [
     "black>=23",
-    "bump2v",
+    "bump2version",
     "check-manifest",
     "mypy",
     "pytest",
