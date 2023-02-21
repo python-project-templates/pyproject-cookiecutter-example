@@ -49,7 +49,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "pyproject-cookiecutter-example"
-copyright = "2022, Tim Paine"
+copyright = "2023, Tim Paine"
 author = "Tim Paine"
 
 # The version info for the project you're documenting, acts as replacement for

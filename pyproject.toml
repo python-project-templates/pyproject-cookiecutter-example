@@ -39,7 +39,7 @@ repository = "https://github.com/timkpaine/pyproject-cookiecutter"
 
 [project.optional-dependencies]
 develop = [
-    "black>=20.",
+    "black>=22",
     "bump2version>=1.0.0",
     "check-manifest",
     "flake8>=3.7.8",
