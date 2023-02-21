@@ -48,6 +48,7 @@ develop = [
     "mypy",
     "pytest>=4.3.0",
     "pytest-cov>=2.6.1",
+    "semgrep",
     "Sphinx>=1.8.4",
     "sphinx-markdown-builder>=0.5.2",
     "twine",
