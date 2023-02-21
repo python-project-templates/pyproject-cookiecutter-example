@@ -1,6 +1,6 @@
 # pyproject-cookiecutter-examples
 
-Example instantiations of my [pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter)
+Example instantiations of my [pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter). Please report issues or open PRs on that repo.
 
 | | | |
 |:--|:--|:--|
