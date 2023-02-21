@@ -95,8 +95,7 @@ dist-py-local-wheel:
 
 dist-check:
 	python -m twine check dist/*
-
-dist: clean build js dist-py dist-check  ## Build dists
+dist: clean build dist-py dist-check  ## Build dists
 
 publish-py:  # Upload python assets
 	python -m twine upload dist/* --skip-existing
