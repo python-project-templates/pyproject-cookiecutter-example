@@ -1,0 +1,149 @@
+[build-system]
+requires = [
+    "hatchling>=1.3.1",
+    "jupyterlab>=3,<4",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyproject-cookiecutter-example"
+authors = [{name = "Tim Paine", email = "t.paine154@gmail.com"}]
+description="An example instance of [timkpaine/pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter), for testing"
+readme = "README.md"
+license = { file = "LICENSE" }
+version = "0.1.0"
+requires-python = ">=3.7"
+keywords = [
+     "Jupyter",
+     "JupyterLab",
+     "Widgets",
+     "IPython",
+ ]
+
+dependencies = [
+    "numpy",
+    "jupyterlab>=3.5.0",
+    "ipywidgets>=7.5.1",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11","Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+]
+
+[project.urls]
+repository = "https://github.com/timkpaine/pyproject-cookiecutter"
+homepage = "https://github.com/timkpaine/pyproject-cookiecutter"
+
+[project.optional-dependencies]
+develop = [
+    "black>=23",
+    "bump2v",
+    "check-manifest",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "semgrep",
+    "Sphinx",
+    "sphinx-markdown-builder",
+    "twine",
+    "wheel",
+]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.black]
+color = true
+line-length = 120
+target-version = ['py310']
+skip-string-normalization = true
+
+[tool.check-manifest]
+ignore = [
+	"pyproject_cookiecutter_example/labextension/**",
+	"pyproject_cookiecutter_example/nbextension/**",
+	"js/**",
+]
+
+
+[tool.hatch.build]
+artifacts = [
+    "pyproject_cookiecutter_example/nbextension/static/index.*",
+    "pyproject_cookiecutter_example/labextension"
+]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"pyproject_cookiecutter_example/nbextension" = "share/jupyter/nbextensions/pyproject_cookiecutter_example"
+"pyproject_cookiecutter_example/labextension" = "share/jupyter/labextensions/pyproject_cookiecutter_example"
+"pyproject_cookiecutter_example/extension/install.json" = "share/jupyter/labextensions/pyproject_cookiecutter_example/install.json"
+"pyproject_cookiecutter_example/extension/pyproject_cookiecutter_example.json" = "etc/jupyter/nbconfig/notebook.d/pyproject_cookiecutter_example.json"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+    "binder",
+    "docs",
+]
+
+[tool.hatch.build.hooks.jupyter-builder]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "pyproject_cookiecutter_example/nbextension/static/index.js",
+    "pyproject_cookiecutter_example/labextension/package.json",
+]
+skip-if-exists = [
+    "pyproject_cookiecutter_example/nbextension/static/index.js",
+    "pyproject_cookiecutter_example/labextension/package.json",
+]
+dependencies = [
+    "hatch-jupyter-builder>=0.5.0",
+]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+path = "js"
+build_cmd = "build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.isort]
+line_length = 120
+known_first_party = 'pydantic'
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+
+[tool.mypy]
+python_version = '3.10'
+# show_error_codes = true
+# follow_imports = 'silent'
+# strict_optional = true
+# warn_redundant_casts = true
+# warn_unused_ignores = true
+# disallow_any_generics = true
+# check_untyped_defs = true
+# no_implicit_reexport = true
+# warn_unused_configs = true
+# disallow_subclassing_any = true
+# disallow_incomplete_defs = true
+# disallow_untyped_decorators = true
+# disallow_untyped_calls = true
+
+[tool.pytest.ini_options]
+asyncio_mode = 'strict'
+testpaths = 'pyproject_cookiecutter_example/tests'

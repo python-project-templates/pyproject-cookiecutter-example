@@ -1,12 +1,11 @@
-# pyproject-cookiecutter-examples
+# pyproject-cookiecutter-example
 
-Example instantiations of my [pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter). Please report issues or open PRs on that repo.
+An example instance of [timkpaine/pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter), for testing
 
-| | | |
-|:--|:--|:--|
-[![Python](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=python)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22) | [`python`](https://github.com/timkpaine/pyproject-cookiecutter-example/tree/python) | Python only |
-[![C++](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=cpp)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22) | [`cpp`](https://github.com/timkpaine/pyproject-cookiecutter-example/tree/cpp) | Python and C++ (pure C++, pybind11, cython) |
-[![JS](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=js)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22) | [`js`](https://github.com/timkpaine/pyproject-cookiecutter-example/tree/js) | Python and React/Perspective |
-[![Jupyter](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=jupyter)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22) | [`jupyter`](https://github.com/timkpaine/pyproject-cookiecutter-example/tree/jupyter) | Python and JupyterLab Extension |
-[![Rust](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=rust)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22) | [`rust`](https://github.com/timkpaine/pyproject-cookiecutter-example/tree/rust) | Python and Rust (maturin/pyo3) |
 
+[![Build Status](https://github.com/timkpaine/pyproject-cookiecutter-example/workflows/Build%20Status/badge.svg?branch=main)](https://github.com/timkpaine/pyproject-cookiecutter-example/actions?query=workflow%3A%22Build+Status%22)
+[![codecov](https://codecov.io/gh/timkpaine/pyproject-cookiecutter-example/branch/main/graph/badge.svg)](https://codecov.io/gh/timkpaine/pyproject-cookiecutter-example)
+[![PyPI](https://img.shields.io/pypi/l/pyproject-cookiecutter-example.svg)](https://pypi.python.org/pypi/pyproject-cookiecutter-example)
+[![PyPI](https://img.shields.io/pypi/v/pyproject-cookiecutter-example.svg)](https://pypi.python.org/pypi/pyproject-cookiecutter-example)
+[![npm](https://img.shields.io/npm/v/pyproject-cookiecutter-example.svg)](https://www.npmjs.com/package/pyproject-cookiecutter-example)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/timkpaine/pyproject-cookiecutter-example/main?urlpath=lab)
