@@ -15,14 +15,15 @@ install:  ## install library
 # LINTS #
 #########
 lint-py:  ## run python linter with flake8 and black
+	python -m ruff pyproject_cookiecutter_example setup.py
 	python -m black --check pyproject_cookiecutter_example setup.py
-	python -m flake8 pyproject_cookiecutter_example setup.py
 lint: lint-py  ## run all lints
 
 # Alias
 lints: lint
 
 fix-py:  ## fix python formatting with black
+	python -m ruff pyproject_cookiecutter_example/ setup.py --fix
 	python -m black pyproject_cookiecutter_example/ setup.py
 fix: fix-py  ## run all autofixers
 
