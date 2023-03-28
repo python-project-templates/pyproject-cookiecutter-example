@@ -34,8 +34,8 @@ dependencies = [
 ]
 
 [project.urls]
-repository = "https://github.com/timkpaine/pyproject-cookiecutter"
-homepage = "https://github.com/timkpaine/pyproject-cookiecutter"
+Repository = "https://github.com/timkpaine/pyproject-cookiecutter"
+Homepage = "https://github.com/timkpaine/pyproject-cookiecutter"
 
 [project.optional-dependencies]
 develop = [
