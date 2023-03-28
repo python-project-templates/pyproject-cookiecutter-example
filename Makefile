@@ -65,12 +65,12 @@ semgrep:
 # TESTS #
 #########
 test-py:  ## run python tests
-	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=python_junit.xml
+	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml
 test-js: ## run javascript tests
 	cd js; yarn test
 
 coverage-py:  ## run tests and collect test coverage
-	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=python_junit.xml --cov=pyproject_cookiecutter_example --cov-report=xml:.coverage/coverage.xml --cov-report=html:.coverage/coverage.html --cov-branch --cov-fail-under=80 --cov-report term-missing
+	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml --cov=pyproject_cookiecutter_example --cov-report=xml:.coverage/coverage.xml --cov-report=html:.coverage/coverage.html --cov-branch --cov-fail-under=80 --cov-report term-missing
 
 show-coverage: coverage-py  ## show interactive python coverage viewer
 	cd .coverage && PYTHONBUFFERED=1 python -m http.server | sec -u "s/0\.0\.0\.0/$$(hostname)/g"
