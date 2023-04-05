@@ -17,9 +17,15 @@ include Makefile
 prune docs
 prune .vscode
 prune .github
+
+# test and lint assets
+prune .pytest_cache
+prune .ruff_cache
+prune .mypy_cache
 prune _skbuild
 
 exclude .clang-format
+
 exclude .gitignore
 exclude .gitattributes
 

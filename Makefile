@@ -15,46 +15,58 @@ install:  ## install library
 #########
 # LINTS #
 #########
-lint-py:
-	python -m flake8 pyproject_cookiecutter_example setup.py
-lint-cpp:
+lint-py:  ## run python linter with flake8 and black
+	python -m ruff pyproject_cookiecutter_example setup.py
+	python -m black --check pyproject_cookiecutter_example setup.py
+lint-cpp:  ## run C++ linter with clang-format
 	clang-format --dry-run -Werror -i -style=file `find ./cpp/{src,include} -name "*.*pp"`
-# lint: lint-py lint-cpp  ## run lints
-lint: lint-py  ## run lints
+# lint: lint-py lint-cpp  ## run all lints
+lint: lint-py  ## run all lints
 
 # Alias
 lints: lint
 
-fix-py:
+fix-py:  ## fix python formatting with black
+	python -m ruff pyproject_cookiecutter_example/ setup.py --fix
 	python -m black pyproject_cookiecutter_example/ setup.py
-fix-cpp:
+fix-cpp:  ## fix C++ formatting with clang-format
 	clang-format -i -style=file `find ./cpp/{src,include} -name "*.*pp"`
-fix: fix-py fix-cpp  ## run autofixers
+fix: fix-py fix-cpp  ## run all autofixers
 
 # alias
 format: fix
 
-check:
+################
+# Other Checks #
+################
+check-manifest:  ## check python sdist manifest with check-manifest
 	check-manifest -v
 
-# Alias
-checks: check
+semgrep:  ## check for possible errors with semgrep
+	semgrep ci --config auto
 
-annotate:
+checks: check-manifest semgrep
+
+# Alias
+check: checks
+
+annotate:  ## run python type annotation checks with mypy
 	python -m mypy ./pyproject_cookiecutter_example
+
+semgrep: 
 
 #########
 # TESTS #
 #########
-test-py: ## Clean and Make unit tests
-	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=python_junit.xml
+test-py:  ## run python tests
+	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml
 
-coverage-py:
-	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=python_junit.xml --cov=pyproject_cookiecutter_example --cov-report=xml:.coverage/coverage.xml --cov-report=html:.coverage/coverage.html --cov-branch --cov-fail-under=80 --cov-report term-missing
+coverage-py:  ## run tests and collect test coverage
+	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml --cov=pyproject_cookiecutter_example --cov-report=xml:.coverage/coverage.xml --cov-report=html:.coverage/coverage.html --cov-branch --cov-fail-under=80 --cov-report term-missing
 
-show-coverage: coverage-py
+show-coverage: coverage-py  ## show interactive python coverage viewer
 	cd .coverage && PYTHONBUFFERED=1 python -m http.server | sec -u "s/0\.0\.0\.0/$$(hostname)/g"
-test: test-py  ## run the tests
+test: test-py  ## run all tests
 
 # Alias
 tests: test
@@ -62,44 +74,44 @@ tests: test
 ########
 # DOCS #
 ########
-docs:  ## make documentation
+docs:  ## build html documentation
 	make -C ./docs html
 
-show-docs:
+show-docs:  ## show docs with running webserver
 	cd ./docs/_build/html/ && PYTHONBUFFERED=1 python -m http.server | sec -u "s/0\.0\.0\.0/$$(hostname)/g"
 
 ###########
 # VERSION #
 ###########
-show-version:
+show-version:  ## show current library version
 	bump2version --dry-run --allow-dirty setup.py --list | grep current | awk -F= '{print $2}'
 
-patch:
+patch:  ## bump a patch version
 	bump2version patch
 
-minor:
+minor:  ## bump a minor version
 	bump2version minor
 
-major:
+major:  ## bump a major version
 	bump2version major
 
 ########
 # DIST #
 ########
-dist-py: dist-py-sdist  # Build python dist
-dist-py-sdist:
+dist-py: dist-py-sdist  # build python dist
+dist-py-sdist:  ## build python sdist
 	python setup.py sdist
 
-dist-py-local-wheel:
+dist-py-local-wheel:  ## build python wheel
 	python setup.py bdist_wheel
 
-dist-check:
+dist-check:  ## run python dist checker with twine
 	python -m twine check dist/*
-dist: clean build dist-py dist-check  ## Build dists
+dist: clean build dist-py dist-check  ## build all dists
 
-publish-py:  # Upload python assets
+publish-py:  # publish python assets
 	python -m twine upload dist/* --skip-existing
-publish: dist publish-py  ## Publish dists
+publish: dist publish-py  ## publish all dists
 
 #########
 # CLEAN #
@@ -121,4 +133,4 @@ help:
 print-%:
 	@echo '$*=$($*)'
 
-.PHONY: clean install serverextension labextension test tests help docs dist js
+.PHONY: develop build-py build-js build build install serverextension labextension lint-py lint-js lint-cpp lint lints fix-py fix-js fix-cpp fix format check-manifest checks check annotate semgrep test-py test-js coverage-py show-coverage test tests docs show-docs show-version patch minor major dist-py dist-py-sdist dist-py-local-wheel dist-check dist publish-py publish-js publish deep-clean clean help 
