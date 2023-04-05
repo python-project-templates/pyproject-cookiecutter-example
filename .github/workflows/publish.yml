@@ -36,11 +36,9 @@ jobs:
         cache-dependency-path: 'setup.py'
 
     - name: Install dependencies
-      run: |
-        make develop
+      run: make develop
     - name: Make python dist
-      run: |
-        make dist-py
+      run: make dist-py
       if: ${{ matrix.os == 'ubuntu-latest' }}
 
     - uses: actions/upload-artifact@v3
