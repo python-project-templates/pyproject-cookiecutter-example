@@ -61,6 +61,7 @@ coverage-py:  ## run tests and collect test coverage
 show-coverage: coverage-py  ## show interactive python coverage viewer
 	cd .coverage && PYTHONBUFFERED=1 python -m http.server | sec -u "s/0\.0\.0\.0/$$(hostname)/g"
 test: test-py  ## run all tests
+coverage: coverage-py  ## run all tests with coverage collection
 
 # Alias
 tests: test
