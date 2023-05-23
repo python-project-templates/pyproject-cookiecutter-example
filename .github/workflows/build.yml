@@ -85,7 +85,7 @@ jobs:
       if: ${{ matrix.os == 'windows-latest' }}
 
     - name: Test
-      run: make tests
+      run: make coverage
       if: ${{ matrix.os == 'ubuntu-latest' }}
 
     - name: Upload test results (Python)
