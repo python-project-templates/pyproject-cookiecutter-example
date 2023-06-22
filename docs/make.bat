@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=https://github.com/timkpaine/pyproject-cookiecutter
+set SPHINXPROJ=https://github.com/python-project-templates/pyproject-cookiecutter
 
 if "%1" == "" goto help
 
