@@ -8,9 +8,9 @@ build-backend = "hatchling.build"
 [project]
 name = "pyproject-cookiecutter-example"
 authors = [{name = "Tim Paine", email = "t.paine154@gmail.com"}]
-description="An example instance of [timkpaine/pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter), for testing"
+description="An example instance of [python-project-templates/pyproject-cookiecutter](https://github.com/python-project-templates/pyproject-cookiecutter), for testing"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = { text = "Apache-2.0" }
 version = "0.1.0"
 requires-python = ">=3.7"
 keywords = [
@@ -40,8 +40,8 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/timkpaine/pyproject-cookiecutter"
-Homepage = "https://github.com/timkpaine/pyproject-cookiecutter"
+Repository = "https://github.com/python-project-templates/pyproject-cookiecutter"
+Homepage = "https://github.com/python-project-templates/pyproject-cookiecutter"
 
 [project.optional-dependencies]
 develop = [

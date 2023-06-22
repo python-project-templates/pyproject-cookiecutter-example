@@ -163,7 +163,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, "pyproject-cookiecutter-example", "pyproject-cookiecutter-example Documentation",
-     author, "pyproject-cookiecutter-example", "An example instance of [timkpaine/pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter), for testing",
+     author, "pyproject-cookiecutter-example", "An example instance of [python-project-templates/pyproject-cookiecutter](https://github.com/python-project-templates/pyproject-cookiecutter), for testing",
      "Miscellaneous"),
 ]
 

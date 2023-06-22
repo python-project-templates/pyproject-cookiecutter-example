@@ -3,7 +3,7 @@
   "name": "pyproject_cookiecutter_example",
   "private": true,
   "version": "0.1.0",
-  "description": "An example instance of [timkpaine/pyproject-cookiecutter](https://github.com/timkpaine/pyproject-cookiecutter), for testing",
+  "description": "An example instance of [python-project-templates/pyproject-cookiecutter](https://github.com/python-project-templates/pyproject-cookiecutter), for testing",
   "keywords": [
     "jupyter",
     "jupyterlab",
@@ -15,9 +15,9 @@
     "dist/*.js",
     "css/*.css"
   ],
-  "homepage": "https://github.com/timkpaine/pyproject-cookiecutter",
+  "homepage": "https://github.com/python-project-templates/pyproject-cookiecutter",
   "bugs": {
-    "url": "https://github.com/timkpaine/pyproject-cookiecutter/issues"
+    "url": "https://github.com/python-project-templates/pyproject-cookiecutter/issues"
   },
   "license": "Apache-2.0",
   "author": {
@@ -27,7 +27,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/timkpaine/pyproject-cookiecutter"
+    "url": "https://github.com/python-project-templates/pyproject-cookiecutter"
   },
   "scripts": {
     "build:babel": "babel src/ --source-maps --out-dir lib/",
