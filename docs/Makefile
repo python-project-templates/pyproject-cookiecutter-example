@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = https://github.com/timkpaine/pyproject-cookiecutter 
+SPHINXPROJ    = https://github.com/python-project-templates/pyproject-cookiecutter 
 SOURCEDIR     = .
 BUILDDIR      = _build
 

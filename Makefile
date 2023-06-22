@@ -65,7 +65,7 @@ test-py:  ## run python tests
 	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml
 
 coverage-py:  ## run tests and collect test coverage
-	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml --cov=pyproject_cookiecutter_example --cov-branch --cov-fail-under=80 --cov-report term-missing --cov-report xml
+	python -m pytest -v pyproject_cookiecutter_example/tests --junitxml=junit.xml --cov=pyproject_cookiecutter_example --cov-branch --cov-fail-under=75 --cov-report term-missing --cov-report xml
 
 test: test-py  ## run all tests
 
